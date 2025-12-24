@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SchoolPolls.Models.Poll>
+@{
+    ViewBag.Title = "Анкети";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">
+    <i class="bi bi-card-checklist me-2"></i>
+    Активни анкети
+</h2>
+
+<div class="row">
+    @foreach (var poll in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+
+                <div class="card-body d-flex flex-column">
+
+                    <div class="poll-title mb-2">
+                        @poll.Title
+                    </div>
+
+                    <div class="poll-description mb-4">
+                        @poll.Description
+                    </div>
+
+                    <div class="mt-auto text-center">
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Details","Polls", new { id = poll.PollId })">
+                            <i class="bi bi-hand-index-thumb me-2"></i>
+                            Гласувай
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

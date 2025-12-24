@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - School Polls</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+    <!-- Custom Style -->
+    <link href="~/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <a class="navbar-brand" href="@Url.Action("Index","Polls")">
+                <i class="bi bi-card-checklist"></i>School Polls
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    @if (Session["UserId"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Polls")">
+                                Анкети
+                            </a>
+                        </li>
+
+                        if (Session["Role"]?.ToString() == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Create","Polls")">
+                                    <i class="bi bi-plus-circle"></i> Нова анкета
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                <ul class="navbar-nav ms-auto align-items-center">
+                    @if (Session["UserId"] != null)
+                    {
+                        <li class="nav-item me-3 fw-semibold">
+                            <i class="bi bi-person-circle"></i> @Session["UserName"]
+                            <span class="text-muted">(@Session["Role"])</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary"
+                               href="@Url.Action("Logout","Account")">
+                                <i class="bi bi-box-arrow-right"></i> Изход
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="btn btn-primary"
+                               href="@Url.Action("Login","Account")">
+                                <i class="bi bi-box-arrow-in-right"></i> Вход
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mt-5">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>School Polls © @DateTime.Now.Year</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

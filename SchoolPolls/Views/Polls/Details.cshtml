@@ -1,0 +1,49 @@
+﻿@model SchoolPolls.Models.Poll
+@{
+    ViewBag.Title = "Анкета";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+
+    <div class="card-header text-center">
+        <i class="bi bi-bar-chart-steps me-2"></i>
+        @Model.Title
+    </div>
+
+    <div class="card-body">
+
+        <p class="poll-description text-center">
+            @Model.Description
+        </p>
+
+        <hr />
+
+        <form method="post">
+
+            <h5 class="text-center mb-4">
+                <i class="bi bi-hand-index-thumb me-2"></i>
+                Избери един отговор
+            </h5>
+
+            @foreach (var option in Model.Options)
+            {
+                <label class="option-item">
+                    <input type="radio"
+                           name="optionId"
+                           value="@option.OptionId"
+                           required />
+                    <span>@option.Text</span>
+                </label>
+            }
+
+            <div class="text-center mt-4">
+                <button class="btn btn-success px-5">
+                    <i class="bi bi-check-circle me-2"></i>
+                    Гласувай
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
