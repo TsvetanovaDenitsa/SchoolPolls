@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SchoolPolls.Models.User>
+@{
+    ViewBag.Title = "Потребители";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Потребители</h2>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <span>Списък с потребители</span>
+
+        <a class="btn btn-success"
+           href="@Url.Action("Create")">
+            ➕ Нов потребител
+        </a>
+    </div>
+
+    <div class="card-body">
+        <table class="table align-middle">
+            <tr>
+                <th>Име</th>
+                <th>Email</th>
+                <th>Роля</th>
+                <th>QR</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.FullName</td>
+                    <td>@u.Email</td>
+
+                    <td>
+                        <span class="badge @(u.Role == "Admin" ? "bg-danger" : "bg-secondary")">
+                            @u.Role
+                        </span>
+                    </td>
+
+                    <td>
+                        <code>@u.QRCodeToken</code>
+                    </td>
+
+                    <td>
+                        @(u.IsActive ? "Активен" : "Неактивен")
+                    </td>
+
+                    <td>
+                        <a class="btn btn-warning btn-sm"
+                           href="@Url.Action("Toggle", new { id = u.UserId })">
+                            Активирай / Спри
+                        </a>
+
+                        <a class="btn btn-info btn-sm"
+                           href="@Url.Action("ToggleRole", new { id = u.UserId })">
+                            Смени роля
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

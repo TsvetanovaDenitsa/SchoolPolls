@@ -16,81 +16,115 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
 
             <a class="navbar-brand" href="@Url.Action("Index","Polls")">
-                <i class="bi bi-card-checklist"></i>School Polls
+                <i class="bi bi-card-checklist"></i> School Polls
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
                     data-bs-target="#mainNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <!-- LEFT MENU -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @if (Session["UserId"] != null)
                     {
+                        <!-- Visible for ALL logged users -->
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Polls")">
+                            <a class="nav-link" href="@Url.Action("Index", "Polls")">
                                 Анкети
                             </a>
                         </li>
 
-                        if (Session["Role"]?.ToString() == "Admin")
+
+                        if (Session["Role"] != null && Session["Role"].ToString() == "Admin")
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Admin")">Админ панел</a>
-                                <a class="nav-link" href="@Url.Action("Index","AdminPolls")">Анкети</a>
-                                
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-shield-lock"></i>
+                                Администрация
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Index","Admin")">
+                                            <i class="bi bi-speedometer2"></i> Админ панел
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Index","AdminPolls")">
+                                            <i class="bi bi-card-checklist"></i> Управление на анкети
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Index","Users")">
+                                            <i class="bi bi-people"></i> Управление на потребители
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         }
                     }
 
                 </ul>
 
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        @if (Session["UserId"] != null)
-                        {
-                            <li class="nav-item me-3 fw-semibold">
-                                <i class="bi bi-person-circle"></i> @Session["UserName"]
-                                <span class="text-muted">(@Session["Role"])</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-primary"
-                                   href="@Url.Action("Logout","Account")">
-                                    <i class="bi bi-box-arrow-right"></i> Изход
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="btn btn-primary"
-                                   href="@Url.Action("Login","Account")">
-                                    <i class="bi bi-box-arrow-in-right"></i> Вход
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
+                <!-- RIGHT MENU -->
+                <ul class="navbar-nav ms-auto align-items-center">
+
+                    @if (Session["UserId"] != null)
+                    {
+                        <li class="nav-item me-3 fw-semibold">
+                            <i class="bi bi-person-circle"></i>
+                            @Session["UserName"]
+                            <span class="text-muted">
+                                (@Session["Role"])
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-primary"
+                               href="@Url.Action("Logout","Account")">
+                                <i class="bi bi-box-arrow-right"></i> Изход
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="btn btn-primary"
+                               href="@Url.Action("Login","Account")">
+                                <i class="bi bi-box-arrow-in-right"></i> Вход
+                            </a>
+                        </li>
+                    }
+
+                </ul>
 
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- MAIN CONTENT -->
-        <main class="container mt-5">
-            @RenderBody()
-        </main>
 
-        <!-- FOOTER -->
-        <footer>
-            <p>School Polls © @DateTime.Now.Year</p>
-        </footer>
+    <!-- MAIN CONTENT -->
+    <main class="container mt-5">
+        @RenderBody()
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+    <!-- FOOTER -->
+    <footer>
+        <p>School Polls © @DateTime.Now.Year</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

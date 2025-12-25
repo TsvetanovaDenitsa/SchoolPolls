@@ -4,44 +4,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Опции към анкетата</h2>
+<h2>Опции за анкета: @ViewBag.PollTitle</h2>
 
-<div class="card">
-    <div class="card-header">
-        Добавяне на опция
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form method="post" action="@Url.Action("Create")">
+    <input type="hidden" name="pollId" value="@ViewBag.PollId" />
+
+    <div class="form-group">
+        <input type="text" name="text"
+               class="form-control"
+               placeholder="Текст на отговора"
+               required />
     </div>
 
-    <div class="card-body">
-        <form method="post"
-              action="@Url.Action("Create","AdminOptions")">
+    <button type="submit" class="btn btn-primary mt-2">
+        <i class="fa fa-plus"></i> Добави опция
+    </button>
+</form>
 
-            <input type="hidden"
-                   name="pollId"
-                   value="@ViewBag.PollId" />
+<hr />
 
-            <label>Текст на опцията</label>
-            <input type="text"
-                   name="text"
-                   class="form-control"
-                   required />
+<table class="table">
+    <tr>
+        <th>Опция</th>
+        <th></th>
+    </tr>
 
-            <br />
-
-            <button class="btn btn-success">
-                Добави
-            </button>
-        </form>
-
-        <hr />
-
-        <h5>Съществуващи опции</h5>
-
-        @foreach (var option in Model)
-        {
-            <div class="option-item">
-                @option.Text
-            </div>
-        }
-    </div>
-</div>
-
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>@o.Text</td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = o.OptionId })"
+                   class="btn btn-sm btn-danger">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>

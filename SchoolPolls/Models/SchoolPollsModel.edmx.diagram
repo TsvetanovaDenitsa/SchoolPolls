@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c0dec6126ba4ed580492448dd1f25a0" Name="Diagram1">
-        <EntityTypeShape EntityType="SchoolPollsDBModel.Option" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="b7ce0eef501e433383ae31f23e205c7d" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolPollsDBModel.Option" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolPollsDBModel.Poll" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolPollsDBModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolPollsDBModel.Vote" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolPollsDBModel.Vote" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="SchoolPollsDBModel.FK_Options_Polls" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolPollsDBModel.FK_Votes_Options" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolPollsDBModel.FK_Polls_Users" ManuallyRouted="false" />

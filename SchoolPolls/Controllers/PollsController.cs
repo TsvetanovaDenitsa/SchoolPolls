@@ -26,7 +26,7 @@ namespace SchoolPolls.Controllers
             return View(polls);
         }
 
-        // 🔹 DETAILS
+        // DETAILS
         public ActionResult Details(int id)
         {
             if (Session["UserId"] == null)
@@ -40,6 +40,33 @@ namespace SchoolPolls.Controllers
                 return HttpNotFound();
 
             return View(poll);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Poll poll)
+        {
+            poll.CreatedAt = DateTime.Now;
+            poll.IsActive = true;
+            poll.CreatedByUserId = (int)Session["UserId"];
+
+            db.Polls.Add(poll);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Toggle(int id)
+        {
+            var poll = db.Polls.Find(id);
+            poll.IsActive = !poll.IsActive;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

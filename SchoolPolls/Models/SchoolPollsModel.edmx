@@ -34,6 +34,7 @@
           <Property Name="Role" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="QRCodeToken" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Votes">
           <Key>
@@ -158,6 +159,7 @@
           <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QRCodeToken" Type="Guid" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Polls" Relationship="Self.FK_Polls_Users" FromRole="Users" ToRole="Polls" />
           <NavigationProperty Name="Votes" Relationship="Self.FK_Votes_Users" FromRole="Users" ToRole="Votes" />
         </EntityType>
@@ -284,6 +286,7 @@
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="QRCodeToken" ColumnName="QRCodeToken" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -27,6 +27,7 @@ namespace SchoolPolls.Models
         public string Role { get; set; }
         public System.Guid QRCodeToken { get; set; }
         public System.DateTime CreatedAt { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Poll> Polls { get; set; }

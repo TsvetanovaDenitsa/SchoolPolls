@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AdminPollsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +247,7 @@
     <Content Include="Views\AdminOptions\Index.cshtml" />
     <Content Include="Views\AdminPolls\Edit.cshtml" />
     <Content Include="Views\AdminPolls\Delete.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Votes\" />
