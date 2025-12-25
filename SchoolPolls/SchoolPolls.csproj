@@ -130,8 +130,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminOptionsController.cs" />
+    <Compile Include="Controllers\AdminPollsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollsController.cs" />
+    <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,8 +240,16 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Polls\Index.cshtml" />
     <Content Include="Views\Polls\Details.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\AdminPolls\Index.cshtml" />
+    <Content Include="Views\AdminPolls\Create.cshtml" />
+    <Content Include="Views\AdminOptions\Index.cshtml" />
+    <Content Include="Views\AdminPolls\Edit.cshtml" />
+    <Content Include="Views\AdminPolls\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Votes\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />

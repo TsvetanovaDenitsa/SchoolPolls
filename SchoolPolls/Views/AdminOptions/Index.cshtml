@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SchoolPolls.Models.Option>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Опции към анкетата</h2>
+
+<div class="card">
+    <div class="card-header">
+        Добавяне на опция
+    </div>
+
+    <div class="card-body">
+        <form method="post"
+              action="@Url.Action("Create","AdminOptions")">
+
+            <input type="hidden"
+                   name="pollId"
+                   value="@ViewBag.PollId" />
+
+            <label>Текст на опцията</label>
+            <input type="text"
+                   name="text"
+                   class="form-control"
+                   required />
+
+            <br />
+
+            <button class="btn btn-success">
+                Добави
+            </button>
+        </form>
+
+        <hr />
+
+        <h5>Съществуващи опции</h5>
+
+        @foreach (var option in Model)
+        {
+            <div class="option-item">
+                @option.Text
+            </div>
+        }
+    </div>
+</div>
+

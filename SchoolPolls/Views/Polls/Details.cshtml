@@ -13,13 +13,21 @@
 
     <div class="card-body">
 
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                @TempData["Error"]
+            </div>
+        }
+
         <p class="poll-description text-center">
             @Model.Description
         </p>
 
         <hr />
 
-        <form method="post">
+        <form method="post" action="@Url.Action("Vote","Votes")">
 
             <h5 class="text-center mb-4">
                 <i class="bi bi-hand-index-thumb me-2"></i>
@@ -28,7 +36,7 @@
 
             @foreach (var option in Model.Options)
             {
-                <label class="option-item">
+                <label class="option-item d-block">
                     <input type="radio"
                            name="optionId"
                            value="@option.OptionId"

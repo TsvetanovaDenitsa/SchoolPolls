@@ -1,0 +1,32 @@
+﻿@model SchoolPolls.Models.Poll
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Нова анкета</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+
+            <label>Заглавие</label>
+            <input name="Title"
+                   class="form-control"
+                   required />
+
+            <br />
+
+            <label>Описание</label>
+            <textarea name="Description"
+                      class="form-control"></textarea>
+
+            <br />
+
+            <button class="btn btn-success">Запази</button>
+            <a class="btn btn-secondary"
+               href="@Url.Action("Index")">Отказ</a>
+
+        </form>
+    </div>
+</div>

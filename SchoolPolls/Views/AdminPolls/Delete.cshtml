@@ -1,0 +1,25 @@
+﻿@model SchoolPolls.Models.Poll
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изтриване на анкета</h2>
+
+<div class="card">
+    <div class="card-body">
+        <p>
+            Сигурни ли сте, че искате да изтриете анкетата:
+            <strong>@Model.Title</strong> ?
+        </p>
+
+        <form method="post">
+            @Html.HiddenFor(m => m.PollId)
+
+            <button class="btn btn-danger">Изтрий</button>
+            <a class="btn btn-secondary"
+               href="@Url.Action("Index")">Отказ</a>
+        </form>
+    </div>
+</div>
+

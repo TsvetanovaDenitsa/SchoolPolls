@@ -1,0 +1,32 @@
+﻿@model SchoolPolls.Models.Poll
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редакция на анкета</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+
+            @Html.HiddenFor(m => m.PollId)
+
+            <label>Заглавие</label>
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+            <br />
+
+            <label>Описание</label>
+            @Html.TextAreaFor(m => m.Description,
+                new { @class = "form-control" })
+
+            <br />
+
+            <button class="btn btn-success">Запази</button>
+            <a class="btn btn-secondary"
+               href="@Url.Action("Index")">Назад</a>
+
+        </form>
+    </div>
+</div>

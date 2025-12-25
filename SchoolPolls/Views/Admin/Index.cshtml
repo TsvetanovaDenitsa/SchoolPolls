@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Административен панел</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-header">
+                Общ брой анкети
+            </div>
+            <div class="card-body">
+                <h1>@ViewBag.Polls</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-header">
+                Активни анкети
+            </div>
+            <div class="card-body">
+                <h1>@ViewBag.ActivePolls</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-header">
+                Общо гласове
+            </div>
+            <div class="card-body">
+                <h1>@ViewBag.Votes</h1>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SchoolPolls.Models.Poll>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Анкети</h2>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <span>Списък с анкети</span>
+        <a class="btn btn-success"
+           href="@Url.Action("Create")">
+            Нова анкета
+        </a>
+    </div>
+
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>Заглавие</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Title</td>
+                    <td>@(p.IsActive ? "Активна" : "Неактивна")</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm"
+                           href="@Url.Action("Edit", new { id = p.PollId })">
+                            Редакция
+                        </a>
+
+                        <a class="btn btn-danger btn-sm"
+                           href="@Url.Action("Delete", new { id = p.PollId })">
+                            Изтрий
+                        </a>
+
+                        <a class="btn btn-secondary btn-sm"
+                           href="@Url.Action("ToggleStatus", new { id = p.PollId })">
+                            Активирай / Спри
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
